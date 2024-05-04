@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caraousel</title>
+    <style>
+        div.caraousel{
+            width: 400px;
+            height: 200px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: lightblue;
+            border: 10px solid black;
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="caraousel"></div>
+    <div class="btn-group">
+        <button id="nextBtn">next</button>
+        <button id="returnBtn">return</button>
+    </div>
+</body>
+<script>
+    const images = [
+        "assets/1.jpeg",
+        "assets/2.jpeg",
+        "assets/3.jpeg"
+    ]
+
+    let index = 0;
+    let cara = document.querySelector(".caraousel");
+    cara.style.backgroundImage = `url('${images[index]}')`;
+
+    document.getElementById("nextBtn").addEventListener('click', ()=>{
+        index = (index+1) % images.length;
+        cara.style.backgroundImage = `url('${images[index]}')`;
+    })
+    document.getElementById("returnBtn").addEventListener('click', ()=>{
+        index =  (index-1 + images.length) %images.length;
+        cara.style.backgroundImage = `url('${images[index]}')`;
+    })
+</script>
+</html>
